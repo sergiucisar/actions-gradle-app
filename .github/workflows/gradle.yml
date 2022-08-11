@@ -27,6 +27,10 @@ jobs:
 
     - name: Build with Gradle
       run: ./gradlew build
+      
+    - name: Get tag
+      id: get-tag
+      run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
